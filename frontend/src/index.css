@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+/* Tailwind CSS v4 Theme Variables */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --color-brand-50: #f5f6ff;
+  --color-brand-100: #ebecfe;
+  --color-brand-200: #dbdffd;
+  --color-brand-300: #c1c7fc;
+  --color-brand-400: #a0a7fa;
+  --color-brand-500: #7c81f7;
+  --color-brand-600: #6366f1;
+  --color-brand-700: #4f46e5;
+  --color-brand-800: #3f37c9;
+  --color-brand-900: #2f279f;
+  --color-brand-950: #171549;
+
+  --color-obsidian-50: #f4f5f6;
+  --color-obsidian-100: #e9ebed;
+  --color-obsidian-200: #c9cfd3;
+  --color-obsidian-300: #a9b3ba;
+  --color-obsidian-400: #697a86;
+  --color-obsidian-500: #294153;
+  --color-obsidian-600: #213442;
+  --color-obsidian-700: #192732;
+  --color-obsidian-800: #111a21;
+  --color-obsidian-900: #0b1015;
+  --color-obsidian-950: #05070a;
+
+  --shadow-premium: 0 4px 20px -2px rgba(17, 24, 39, 0.03), 0 2px 8px -1px rgba(17, 24, 39, 0.02);
+  --shadow-glow-brand: 0 0 15px -3px rgba(99, 102, 241, 0.25);
+  --shadow-glow-emerald: 0 0 15px -3px rgba(16, 185, 129, 0.25);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #0f172a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animations and Utilities */
+.animate-fade-in {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+  0% { opacity: 0; transform: scale(0.97) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Glass card styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+/* Glow highlight for selected cards */
+.glow-card-brand {
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.05), 0 0 15px -3px rgba(99, 102, 241, 0.15);
+}
+
+.glow-card-emerald {
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.05), 0 0 15px -3px rgba(16, 185, 129, 0.15);
+}
+
+/* Smooth layout transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

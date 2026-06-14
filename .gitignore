@@ -1,0 +1,40 @@
+# Databases & Cache
+*.db
+*.db-journal
+*.sqlite
+__pycache__/
+*.pyc
+
+# Local Environment Keys (CRITICAL: Do not upload API keys)
+.env
+.env.*
+!.env.example
+
+# Frontend Dependencies & Builds
+node_modules/
+dist/
+build/
+.svelte-kit/
+.next/
+.nuxt/
+.vercel
+.expo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+.env/
+
+# Temp Uploads and Exports
+temp_uploads/
+temp_exports/
+test_input.xlsx
+test_output.xlsx
+
+# OS files
+.DS_Store
+Thumbs.db
