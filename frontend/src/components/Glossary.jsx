@@ -9,7 +9,7 @@ export default function Glossary() {
   const [search, setSearch] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [loading, setLoading] = useState(true);
-  
+
   // Selection state
   const [selectedIds, setSelectedIds] = useState([]);
 
@@ -18,11 +18,11 @@ export default function Glossary() {
   const [editSource, setEditSource] = useState('');
   const [editTarget, setEditTarget] = useState('');
   const [editError, setEditError] = useState(null);
-  
+
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState(null);
   const [importError, setImportError] = useState(null);
-  
+
   const fileInputRef = useRef(null);
   const limit = 10;
 
@@ -287,7 +287,7 @@ export default function Glossary() {
             type="text"
             value={search}
             onChange={handleSearchChange}
-            placeholder="Filter glossary by Chinese or Vietnamese terms..."
+            placeholder="Search glossary by Chinese or Vietnamese terms..."
             className="w-full bg-transparent border-0 text-sm focus:outline-none placeholder-slate-450 text-slate-800 font-medium"
           />
         </div>
@@ -348,15 +348,14 @@ export default function Glossary() {
                   const isEditing = editingId === term.id;
                   const isSelected = selectedIds.includes(term.id);
                   return (
-                    <tr 
-                      key={term.id} 
-                      className={`transition-colors duration-150 ${
-                        isEditing 
-                          ? 'bg-brand-50/10' 
-                          : isSelected 
-                            ? 'bg-slate-50/60' 
-                            : 'hover:bg-slate-50/20'
-                      }`}
+                    <tr
+                      key={term.id}
+                      className={`transition-colors duration-150 ${isEditing
+                        ? 'bg-brand-50/10'
+                        : isSelected
+                          ? 'bg-slate-50/60'
+                          : 'hover:bg-slate-50/20'
+                        }`}
                     >
                       {/* Checkbox */}
                       <td className="px-6 py-3.5 text-center">
@@ -475,9 +474,9 @@ export default function Glossary() {
         </div>
         <div className="space-y-1.5 text-slate-500 font-semibold leading-relaxed">
           <h4 className="font-bold text-slate-900">Glossary Management Tips:</h4>
-          <p>• **Sorting**: Use the dropdown at the top to toggle order from Newest to Oldest added rules.</p>
-          <p>• **Modify**: Click the edit pencil icon on any row to edit fields inline, then save with checkmark.</p>
-          <p>• **Bulk Actions**: Select row checkboxes (or click the header checkbox to select all) and click the red "Delete Selected" button to clean up multiple terms at once.</p>
+          <p>• Sorting: Use the dropdown at the top to toggle order from Newest to Oldest added rules.</p>
+          <p>• Modify: Click the edit pencil icon on any row to edit fields inline, then save with checkmark.</p>
+          <p>• Bulk Actions: Select row checkboxes (or click the header checkbox to select all) and click the red "Delete Selected" button to clean up multiple terms at once.</p>
         </div>
       </div>
     </div>

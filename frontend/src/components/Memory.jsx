@@ -9,7 +9,7 @@ export default function Memory() {
   const [search, setSearch] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [loading, setLoading] = useState(true);
-  
+
   // Selection state
   const [selectedIds, setSelectedIds] = useState([]);
 
@@ -18,12 +18,12 @@ export default function Memory() {
   const [editSource, setEditSource] = useState('');
   const [editTarget, setEditTarget] = useState('');
   const [editError, setEditError] = useState(null);
-  
+
   // Import states
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState(null);
   const [importError, setImportError] = useState(null);
-  
+
   const fileInputRef = useRef(null);
   const limit = 10;
 
@@ -349,15 +349,14 @@ export default function Memory() {
                   const isEditing = editingId === item.id;
                   const isSelected = selectedIds.includes(item.id);
                   return (
-                    <tr 
-                      key={item.id} 
-                      className={`transition-colors duration-150 ${
-                        isEditing 
-                          ? 'bg-brand-50/10' 
-                          : isSelected 
-                            ? 'bg-slate-50/60' 
+                    <tr
+                      key={item.id}
+                      className={`transition-colors duration-150 ${isEditing
+                          ? 'bg-brand-50/10'
+                          : isSelected
+                            ? 'bg-slate-50/60'
                             : 'hover:bg-slate-50/20'
-                      }`}
+                        }`}
                     >
                       {/* Checkbox */}
                       <td className="px-6 py-3.5 text-center">
@@ -476,9 +475,9 @@ export default function Memory() {
         </div>
         <div className="space-y-1.5 text-slate-500 font-semibold leading-relaxed">
           <h4 className="font-bold text-slate-900">Translation Memory Tips:</h4>
-          <p>• **Sorting**: Use the sort selector to toggle between Newest (most recently processed/seeded) and Oldest records.</p>
-          <p>• **Modify**: Click the edit pencil icon on any row to edit fields inline, then save with checkmark.</p>
-          <p>• **Bulk Actions**: Select row checkboxes (or click the header checkbox to select all) and click the red "Delete Selected" button to clean up multiple entries at once.</p>
+          <p>• Sorting: Use the sort selector to toggle between Newest (most recently processed/seeded) and Oldest records.</p>
+          <p>• Modify: Click the edit pencil icon on any row to edit fields inline, then save with checkmark.</p>
+          <p>• Bulk Actions: Select row checkboxes (or click the header checkbox to select all) and click the red "Delete Selected" button to clean up multiple entries at once.</p>
         </div>
       </div>
     </div>

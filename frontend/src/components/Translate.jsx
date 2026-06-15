@@ -8,13 +8,13 @@ export default function Translate() {
   const [previewData, setPreviewData] = useState([]);
   const [previewSheets, setPreviewSheets] = useState([]);
   const [activeSheet, setActiveSheet] = useState('');
-  
+
   const [jobId, setJobId] = useState(null);
   const [jobProgress, setJobProgress] = useState(null);
   const [isTranslating, setIsTranslating] = useState(false);
   const [saveToTm, setSaveToTm] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const fileInputRef = useRef(null);
   const pollingRef = useRef(null);
 
@@ -40,11 +40,11 @@ export default function Translate() {
       try {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: 'array' });
-        
+
         setPreviewSheets(workbook.SheetNames);
         const firstSheetName = workbook.SheetNames[0];
         setActiveSheet(firstSheetName);
-        
+
         const worksheet = workbook.Sheets[firstSheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         setPreviewData(jsonData.slice(0, 10)); // First 10 rows
@@ -76,7 +76,7 @@ export default function Translate() {
 
   const handleStartTranslation = async () => {
     if (!file) return;
-    
+
     setIsTranslating(true);
     setError(null);
     setJobProgress({ status: 'PENDING', total_rows: 0, processed_rows: 0, tm_hits: 0, ai_translations: 0 });
@@ -104,7 +104,7 @@ export default function Translate() {
         const response = await api.get(`/api/jobs/${jobId}`);
         const data = response.data;
         setJobProgress(data);
-        
+
         if (data.status === 'COMPLETED' || data.status === 'FAILED') {
           setIsTranslating(false);
           clearInterval(pollingRef.current);
@@ -183,7 +183,7 @@ export default function Translate() {
               <p className="text-slate-500 text-sm mt-2 max-w-sm mx-auto font-medium">
                 Drag and drop your Excel script here, or click to open folders.
               </p>
-              
+
               <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-400">
                 <span className="flex items-center gap-1.5"><FileSpreadsheet className="w-4 h-4 text-slate-400" /> Multi-worksheet automatic iteration</span>
                 <span>•</span>
@@ -203,7 +203,7 @@ export default function Translate() {
                     <p className="text-slate-400 text-xs font-bold mt-1">
                       {(file.size / 1024).toFixed(1)} KB • Microsoft Excel Spreadsheet
                     </p>
-                    
+
                     {/* Toggle settings */}
                     <div className="flex items-center gap-2.5 mt-2.5">
                       <input
@@ -219,7 +219,7 @@ export default function Translate() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleClear}
@@ -261,8 +261,8 @@ export default function Translate() {
                         {previewData.map((row, index) => {
                           const isHeader = index === 0;
                           return (
-                            <tr 
-                              key={index} 
+                            <tr
+                              key={index}
                               className={`hover:bg-slate-50/20 transition-colors ${isHeader ? 'bg-slate-50/40 font-bold text-slate-800 text-sm' : ''}`}
                             >
                               <td className="px-6 py-3 text-slate-400 font-semibold font-mono text-center">{index + 1}</td>
@@ -285,7 +285,7 @@ export default function Translate() {
                     </table>
                   </div>
                   <div className="px-6 py-4.5 border-t border-slate-100 text-slate-400 text-xs bg-slate-50/10">
-                    * LocFlow will read **all sheets**, skip Row 1 on each, and fill only empty cells in Column B. Pre-translated rows are untouched.
+                    * LocFlow will read all sheets, skip Row 1 on each, and fill only empty cells in Column B. Pre-translated rows are untouched.
                   </div>
                 </div>
               )}
@@ -301,7 +301,7 @@ export default function Translate() {
             <h3 className="font-extrabold text-slate-950 text-xl truncate max-w-md mx-auto">
               {jobProgress?.filename || file?.name}
             </h3>
-            
+
             <div className="flex items-center justify-center gap-2">
               {jobProgress?.status === 'PROCESSING' && <RotateCw className="w-4 h-4 text-brand-500 animate-spin" />}
               <p className="text-slate-400 text-xs font-bold uppercase tracking-wider">
@@ -319,9 +319,9 @@ export default function Translate() {
               <span>Overall Progress</span>
               <span className="text-brand-700 font-extrabold text-base">{getProgressPercentage()}%</span>
             </div>
-            
+
             <div className="w-full bg-slate-200/60 h-3 rounded-full overflow-hidden border border-slate-200/30 relative">
-              <div 
+              <div
                 className="bg-gradient-to-r from-brand-500 to-brand-600 h-full rounded-full transition-all duration-300 shadow-inner relative"
                 style={{ width: `${getProgressPercentage()}%` }}
               >
@@ -367,7 +367,7 @@ export default function Translate() {
                   Processed {jobProgress.total_rows} rows. AI cells are bolded in the sheet for easier review.
                 </p>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-3 w-full pt-2">
                 <button
                   onClick={handleClear}
