@@ -4,7 +4,7 @@ An AI-powered localization workflow designed to automate Chinese-to-Vietnamese g
 
 ---
 
-## 🎥 2-Minute Demo Video
+## 🎥 Demo Video
 > **[Watch the LocFlow Product Walkthrough on this link: https://www.youtube.com/watch?si=YfLdzo1lydmWVT2s&v=sayXlTbXtXE&feature=youtu.be]**  
 > *A quick video showing file uploads, Translation Memory hits, glossary enforcement, inline editing, sorting, and Excel exports.*
 
